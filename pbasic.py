@@ -1,5 +1,6 @@
 '''
-Maths Functions
+'''
+# Maths Functions
 '''
 def add(num1, num2):
     sum = num1 + num2
@@ -38,7 +39,7 @@ import numpy as np
 import matplotlibpyplot as plt
 
 '''
-Cosine Graph
+# Cosine Graph
 '''
 def cosine(x,y):
     x = np.arange(0, 10, 0.1);
@@ -58,7 +59,7 @@ def cosine(x,y):
     plt.show()
 
 '''
-Cubic Graph
+# Cubic Graph
 '''
 def cubic(x,y):
     x = np.linspace(-5,5,100)
@@ -77,7 +78,7 @@ def cubic(x,y):
     plt.show()
 
 '''
-Logistic Map
+# Logistic Map
 '''
 def logistic_map(rate, init_percentage, iterations):
     years = []
@@ -100,7 +101,7 @@ def logistic_map(rate, init_percentage, iterations):
     plt.show()
 
 '''
-Quadratic Graph
+# Quadratic Graph
 '''
 def quad(x,y):
     x = np.linspace(-5,5,100)
@@ -119,7 +120,7 @@ def quad(x,y):
     plt.show()
 
 '''
-Text to File Converter
+# Text to File Converter
 '''
 def convert_to_file(enter_text):
     import os
@@ -148,3 +149,63 @@ def convert_to_file(enter_text):
         else:
             print("Please enter y, n, clear text")
             continue
+
+'''
+# CSV to Excel Converter
+'''
+import pandas as pd 
+def makeExcel(CSV, Excel):
+    CSV = input("Enter the path to your CSV: ")
+    excelconvert = pd.read_csv(CSV)
+    excel = input("Enter papth where you have to save excel file")
+    excelconvert.to_excel(excel)
+    print(f"{CSV} converted to .xlsx")
+'''
+'''
+# Convert Your Age to Months and Days
+'''
+import time
+from calendar import isleap
+def age_to_months(age):
+    # judge the leap year
+    def judge_leap_year(year):
+        if isleap(year):
+            return True
+        else:
+            return False
+
+
+    # returns the number of days in each month
+    def month_days(month, leap_year):
+        if month in [1, 3, 5, 7, 8, 10, 12]:
+            return 31
+        elif month in [4, 6, 9, 11]:
+            return 30
+        elif month == 2 and leap_year:
+            return 29
+        elif month == 2 and (not leap_year):
+            return 28
+
+    localtime = time.localtime(time.time())
+
+    year = int(age)
+    month = year * 12 + localtime.tm_mon
+    day = 0
+
+    begin_year = int(localtime.tm_year) - year
+    end_year = begin_year + year
+
+    # calculate the days
+    for y in range(begin_year, end_year):
+        if (judge_leap_year(y)):
+            day = day + 366
+    else:
+        day = day + 365
+
+    leap_year = judge_leap_year(localtime.tm_year)
+    for m in range(1, localtime.tm_mon):
+        day = day + month_days(m, leap_year)
+
+    day = day + localtime.tm_mday
+    print("Your age is %d years or " % (year), end="")
+    print("%d months or %d days" % (month, day))

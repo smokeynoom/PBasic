@@ -2,7 +2,6 @@
 -> This is an example program
 -> Made by smokeynoom
 """
-
 # Maths Game
 import pbasic as b
 import random as r
@@ -23,3 +22,5 @@ if str(correct_answer) == str(user_answer):
 
 else: 
     print("Your answer is Wrong! ❌")
+
+b.age_to_months(100)
