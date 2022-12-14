@@ -207,3 +207,14 @@ def age_to_months(age):
     day = day + localtime.tm_mday
     print("Your age is %d years or " % (year), end="")
     print("%d months or %d days" % (month, day))
+
+'''
+# Autoclicker
+'''
+import pyautogui
+import time
+
+def auto_click(x, y, clicks, time):
+    for i in range(clicks):
+        pyautogui.click(x, y)
+        time.sleep(time)
