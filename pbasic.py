@@ -1,5 +1,4 @@
 '''
-'''
 # Maths Functions
 '''
 def add(num1, num2):
@@ -160,7 +159,6 @@ def makeExcel(CSV, Excel):
     excel = input("Enter papth where you have to save excel file")
     excelconvert.to_excel(excel)
     print(f"{CSV} converted to .xlsx")
-'''
 '''
 # Convert Your Age to Months and Days
 '''
